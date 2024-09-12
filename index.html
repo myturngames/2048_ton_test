@@ -27,65 +27,65 @@
 
     <script>
         window.onload = async () => {
-            //window.Telegram.WebApp.ready();
-            //window.Telegram.WebApp.expand();
-            //window.Telegram.WebApp.enableClosingConfirmation();
-            //window.Telegram.WebApp.disableVerticalSwipes();
-            //console.log("Init TMA");
-            //console.log(window.Telegram.WebApp.initData);
-            //console.log(window.Telegram.WebApp.initDataUnsafe);
+            window.Telegram.WebApp.ready();
+            window.Telegram.WebApp.expand();
+            window.Telegram.WebApp.enableClosingConfirmation();
+            window.Telegram.WebApp.disableVerticalSwipes();
+            console.log("Init TMA");
+            console.log(window.Telegram.WebApp.initData);
+            console.log(window.Telegram.WebApp.initDataUnsafe);
 
-            //// Init SDK
-            //window.currentTxState = 'none'
-            //window.TON_SDK = { name: "ton_sdk" }
-            //const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            //    manifestUrl: "https://tcdn.myturn-games.com/PickAxe/tonconnect-manifest.json",
-            //});
+            // Init SDK
+            window.currentTxState = 'none'
+            window.TON_SDK = { name: "ton_sdk" }
+            const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+                manifestUrl: "https://tcdn.myturn-games.com/2048/2048_test_manifest.json",
+            });
 
-            //const walletsList = await tonConnectUI.connector.getWallets();
-            //for (let i = 0; i < walletsList.length; i++) {
-            //    const wallet = walletsList[i];
-            //    if (wallet.embedded) {
-            //        wallet.embedded = true
-            //    }
-            //}
+            const walletsList = await tonConnectUI.connector.getWallets();
+            for (let i = 0; i < walletsList.length; i++) {
+                const wallet = walletsList[i];
+                if (wallet.embedded) {
+                    wallet.embedded = true
+                }
+            }
 
-            //tonConnectUI.onModalStateChange(
-            //    (state) => {
-            //        console.log(state);
-            //    }
-            //);
+            tonConnectUI.onModalStateChange(
+                (state) => {
+                    console.log(state);
+                }
+            );
 
-            //// Connect wallet
-            //window.TON_SDK.connectWallet = async function connectWallet() {
-            //    try {
-            //        let result = await tonConnectUI.openModal().then((data) => { console.log(data) });
-            //        console.log(result);
-            //    } catch (error) {
-            //        return error;
-            //    }
-            //}
+            // Connect wallet
+            window.TON_SDK.connectWallet = async function connectWallet() {
+                try {
+                    let result = await tonConnectUI.openModal().then((data) => { console.log(data) });
+                    console.log(result);
+                } catch (error) {
+                    return error;
+                }
+            }
 
-            //window.TON_SDK.disconnectWallet = async function disconnectWallet() {
-            //    let result = await tonConnectUI.disconnect();
-            //    console.log(result);
-            //    setTimeout(() => {
-            //        console.log(result);
-            //    }, 500)
-            //}
+            window.TON_SDK.disconnectWallet = async function disconnectWallet() {
+                let result = await tonConnectUI.disconnect();
+                console.log(result);
+                setTimeout(() => {
+                    console.log(result);
+                }, 500)
+            }
 
-            //window.TON_SDK.getWalletInfo = function getWalletInfo() {
-            //    const currentWallet = tonConnectUI.wallet;
-            //    const currentWalletInfo = tonConnectUI.walletInfo;
-            //    const currentAccount = tonConnectUI.account;
-            //    const currentIsConnectedStatus = tonConnectUI.connected;
-            //    return {
-            //        currentWallet: currentWallet,
-            //        currentWalletInfo: currentWalletInfo,
-            //        currentAccount: currentAccount,
-            //        currentIsConnectedStatus: currentIsConnectedStatus
-            //    }
-            //}
+            window.TON_SDK.getWalletInfo = function getWalletInfo() {
+                const currentWallet = tonConnectUI.wallet;
+                const currentWalletInfo = tonConnectUI.walletInfo;
+                const currentAccount = tonConnectUI.account;
+                const currentIsConnectedStatus = tonConnectUI.connected;
+                return {
+                    currentWallet: currentWallet,
+                    currentWalletInfo: currentWalletInfo,
+                    currentAccount: currentAccount,
+                    currentIsConnectedStatus: currentIsConnectedStatus
+                }
+            }
 
             var container = document.querySelector("#unity-container");
             var canvas = document.querySelector("#unity-canvas");
